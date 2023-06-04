@@ -40,7 +40,7 @@ export class GameEffects {
             ofType(GameActions.updateGame),
             mergeMap(action =>
                 this.gameService.updateGame(action.game).pipe(
-                    map(game => GameActions.updateGame({ game })),
+                    map(game => GameActions.updateGameSuccess({ game })),
                     catchError(() => EMPTY)
                 )
             )

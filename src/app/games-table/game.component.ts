@@ -41,5 +41,11 @@ export class GameComponent implements OnInit {
     sizeColumnsToFit() {
         this.agGrid.api.sizeColumnsToFit();
     }
+
+    onCellValueChanged(event: any) {
+        debugger
+        const updatedGame = { ...event.data, [event.colDef.field]: event.newValue };
+        this.store.dispatch(GameActions.updateGame({ game: updatedGame }));
+    }
 }
 

@@ -106,7 +106,7 @@
       "id": 18,
       "platform": "Nintendo Switch",
       "name": "Pokémon Sword",
-      "pegi": 7
+      "pegi": "8"
     },
     {
       "id": 19,
@@ -176,7 +176,7 @@
     },
     {
       "id": 30,
-      "platform": "PC",
+      "platform": "bj",
       "name": "Among Us",
       "pegi": 7
     }

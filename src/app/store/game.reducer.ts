@@ -14,8 +14,8 @@ export const gameReducer = createReducer(
   }),
   on(GameActions.addGameSuccess, (state, action) => {
     return [...state, action.game];
-  }),  
-  on(GameActions.updateGame, (state, action) => {
+  }),
+  on(GameActions.updateGameSuccess, (state, action) => {
     return state.map(game => game.id === action.game.id ? { ...game, ...action.game } : game);
   }),
   on(GameActions.deleteGame, (state, action) => {
