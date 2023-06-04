@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable, map } from 'rxjs';
+import { Game } from '../models/game.model';
+import * as GameActions from '../store/game.actions';
+import { AgGridAngular } from 'ag-grid-angular';
 
 @Component({
     selector: 'game-table',
@@ -7,9 +12,34 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class GameComponent implements OnInit {
-    constructor() { }
+    @ViewChild('agGrid') agGrid!: AgGridAngular;
+    games$: Observable<Game[]>;
+    columnDefs = [
+        { field: 'id', editable: false, sortable: true, filter: true },
+        { field: 'name', editable: true, sortable: true, filter: true },
+        { field: 'platform', editable: true, sortable: true, filter: true },
+        { field: 'pegi', editable: true, sortable: true, filter: true },
+    ];
+    defaultColDef = { resizable: true };
 
-    ngOnInit(): void {
+    constructor(private store: Store<{ games: Game[] }>) {
+        this.games$ = this.store.select('games').pipe(
+            map(games => games.map(game => ({ ...game })))
+        );
+    }
+
+    ngOnInit() {
+        this.store.dispatch(GameActions.loadGames());
+    }
+
+    ngAfterViewInit() {
+        setTimeout(() => {
+            this.sizeColumnsToFit();
+        });
+    }
+
+    sizeColumnsToFit() {
+        this.agGrid.api.sizeColumnsToFit();
     }
 }
 

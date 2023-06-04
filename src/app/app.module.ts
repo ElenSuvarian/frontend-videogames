@@ -4,6 +4,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
+import { AgGridModule } from 'ag-grid-angular';
 
 import { environment } from '../app/environment/environment';
 import { gameReducer } from '../app/store/game.reducer';
@@ -21,6 +22,7 @@ import { GameComponent } from './games-table/game.component';
   imports: [
     BrowserModule,
     HttpClientModule,
+    AgGridModule,
     StoreModule.forRoot({ games: gameReducer }),
     EffectsModule.forRoot([GameEffects]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],

@@ -1,1 +1,14 @@
-<div>Games component</div>
+<ng-container *ngIf="games$ | async as games; else loading">
+    <ag-grid-angular
+      #agGrid
+      class="ag-theme-alternating"
+      style="width: 100%; height: 500px;"
+      [rowData]="games"
+      [columnDefs]="columnDefs"
+      [defaultColDef]="defaultColDef">
+    </ag-grid-angular>
+</ng-container>
+  
+<ng-template #loading>
+    <div>Loading...</div>
+</ng-template>
