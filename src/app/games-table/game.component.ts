@@ -21,6 +21,7 @@ export class GameComponent implements OnInit {
         { field: 'pegi', editable: true, sortable: true, filter: true },
     ];
     defaultColDef = { resizable: true };
+    selectedGameId: number | null = null;
 
     constructor(private store: Store<{ games: Game[] }>) {
         this.games$ = this.store.select('games').pipe(
@@ -47,5 +48,9 @@ export class GameComponent implements OnInit {
         const updatedGame = { ...event.data, [event.colDef.field]: event.newValue };
         this.store.dispatch(GameActions.updateGame({ game: updatedGame }));
     }
+
+    onRowClicked(event: any) {
+        this.selectedGameId = event.data.id;
+      }
 }
 
