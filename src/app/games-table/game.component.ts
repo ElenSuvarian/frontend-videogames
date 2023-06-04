@@ -22,6 +22,7 @@ export class GameComponent implements OnInit {
     ];
     defaultColDef = { resizable: true };
     selectedGameId: number | null = null;
+    searchWord: string = '';
 
     constructor(private store: Store<{ games: Game[] }>) {
         this.games$ = this.store.select('games').pipe(
@@ -44,13 +45,16 @@ export class GameComponent implements OnInit {
     }
 
     onCellValueChanged(event: any) {
-        debugger
         const updatedGame = { ...event.data, [event.colDef.field]: event.newValue };
         this.store.dispatch(GameActions.updateGame({ game: updatedGame }));
     }
 
     onRowClicked(event: any) {
         this.selectedGameId = event.data.id;
-      }
+    }
+
+    applyFilter() {
+        this.agGrid.api.setQuickFilter(this.searchWord);
+    }
 }
 
