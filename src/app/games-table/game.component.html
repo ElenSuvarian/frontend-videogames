@@ -7,6 +7,13 @@
         [columnDefs]="columnDefs" (cellValueChanged)="onCellValueChanged($event)" [defaultColDef]="defaultColDef"
         [rowSelection]="'single'" (rowClicked)="onRowClicked($event)">
     </ag-grid-angular>
+
+    <div class="selected-row-info" *ngIf="selectedGameId !== null">
+        <h3>Game Information</h3>
+        <p><strong>Name:</strong> {{ getSelectedGame()?.name }}</p>
+        <p><strong>Platform:</strong> {{ getSelectedGame()?.platform }}</p>
+        <p><strong>PEGI:</strong> {{ getSelectedGame()?.pegi }}</p>
+    </div>
 </ng-container>
 
 <ng-template #loading>

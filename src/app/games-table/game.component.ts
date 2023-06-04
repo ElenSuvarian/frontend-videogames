@@ -56,5 +56,13 @@ export class GameComponent implements OnInit {
     applyFilter() {
         this.agGrid.api.setQuickFilter(this.searchWord);
     }
+
+    getSelectedGame(): Game | undefined {
+        let selectedGame: Game | undefined;
+        this.games$.subscribe(games => {
+            selectedGame = games.find(game => game.id === this.selectedGameId);
+        });
+        return selectedGame;
+    }
 }
 
