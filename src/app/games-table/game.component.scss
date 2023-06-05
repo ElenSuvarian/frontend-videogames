@@ -84,6 +84,11 @@
         cursor: pointer;
         margin-top: 10px;
         margin-right: 10px;
+
+        &:disabled {
+            background-color: grey;
+            cursor: not-allowed;
+        }
     }
 
     .cancel-button {
@@ -92,5 +97,18 @@
         font-size: 16px;
         cursor: pointer;
         margin-top: 10px;
+    }
+}
+
+.delete-button {
+    background-color: #e74c3c;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    &:disabled {
+        background-color: grey;
+        cursor: not-allowed;
     }
 }

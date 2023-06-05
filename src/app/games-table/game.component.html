@@ -7,6 +7,8 @@
         [columnDefs]="columnDefs" (cellValueChanged)="onCellValueChanged($event)" [defaultColDef]="defaultColDef"
         [rowSelection]="'single'" (rowClicked)="onRowClicked($event)">
     </ag-grid-angular>
+    <br>
+    <button class="delete-button" (click)="deleteGame()" [disabled]="!selectedGameId">Delete game</button>
 
     <div>
         <form (ngSubmit)="addGame()" class="form-section">
@@ -19,9 +21,9 @@
                 required>
             <br>
             <label for="pegi">PEGI:</label>
-            <input type="number" id="pegi" [(ngModel)]="newGame.pegi" [ngModelOptions]="{standalone: true}" required>
+            <input type="number" id="pegi" min="0" [(ngModel)]="newGame.pegi" [ngModelOptions]="{standalone: true}" required>
             <br>
-            <button type="submit" class="add-button">Add</button>
+            <button type="submit" class="add-button" [disabled]="!newGame.name || !newGame.platform || !newGame.pegi">Add</button>
             <button type="button" (click)="cancelAdd()" class="cancel-button">Cancel</button>
         </form>
     </div>

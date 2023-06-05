@@ -20,7 +20,7 @@ export class GameComponent implements OnInit {
         { field: 'name', editable: true, sortable: true, filter: true, tooltipField: 'name' },
         { field: 'platform', editable: true, sortable: true, filter: true, tooltipField: 'platform' },
         { field: 'pegi', editable: true, sortable: true, filter: true, tooltipField: 'pegi' },
-    ];    
+    ];
     defaultColDef = { resizable: true };
     selectedGameId: number | null = null;
     searchWord: string = '';
@@ -77,6 +77,13 @@ export class GameComponent implements OnInit {
 
     cancelAdd() {
         this.newGame = { id: 0, name: '', platform: '', pegi: 0 };
+    }
+
+    deleteGame() {
+        if (this.selectedGameId) {
+            this.store.dispatch(GameActions.deleteGame({ gameId: this.selectedGameId }));
+            this.selectedGameId = null;
+        }
     }
 
     generateNewId(): number {
