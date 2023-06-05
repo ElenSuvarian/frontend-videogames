@@ -3,10 +3,28 @@
     <input type="text" [(ngModel)]="searchWord" (input)="applyFilter()" placeholder="Buscar...">
 </div>
 <ng-container *ngIf="games$ | async as games; else loading">
-    <ag-grid-angular #agGrid style="width: 100%; height: 500px;" class="ag-theme-alternating" [rowData]="games"
+    <ag-grid-angular #agGrid style="width: 100%; height: 400px;" class="ag-theme-alpine" [rowData]="games"
         [columnDefs]="columnDefs" (cellValueChanged)="onCellValueChanged($event)" [defaultColDef]="defaultColDef"
         [rowSelection]="'single'" (rowClicked)="onRowClicked($event)">
     </ag-grid-angular>
+
+    <div>
+        <form (ngSubmit)="addGame()" class="form-section">
+            <h2>Add game</h2>
+            <label for="name">Name:</label>
+            <input type="text" id="name" [(ngModel)]="newGame.name" [ngModelOptions]="{standalone: true}" required>
+            <br>
+            <label for="platform">Platform:</label>
+            <input type="text" id="platform" [(ngModel)]="newGame.platform" [ngModelOptions]="{standalone: true}"
+                required>
+            <br>
+            <label for="pegi">PEGI:</label>
+            <input type="number" id="pegi" [(ngModel)]="newGame.pegi" [ngModelOptions]="{standalone: true}" required>
+            <br>
+            <button type="submit" class="add-button">Add</button>
+            <button type="button" (click)="cancelAdd()" class="cancel-button">Cancel</button>
+        </form>
+    </div>
 
     <div class="selected-row-info" *ngIf="selectedGameId !== null">
         <h3>Game Information</h3>

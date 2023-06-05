@@ -25,7 +25,7 @@ export class GameEffects {
 
     addGame$ = createEffect(() =>
         this.actions$.pipe(
-            ofType(GameActions.addGameSuccess),
+            ofType(GameActions.addGame),
             mergeMap(action =>
                 this.gameService.addGame(action.game).pipe(
                     map(game => GameActions.addGameSuccess({ game })),

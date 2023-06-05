@@ -16,7 +16,7 @@
       "id": 3,
       "platform": "Nintendo Switch",
       "name": "Animal Crossing: New Horizons",
-      "pegi": "5"
+      "pegi": "6"
     },
     {
       "id": 4,
@@ -40,7 +40,7 @@
       "id": 7,
       "platform": "PC",
       "name": "Minecraft",
-      "pegi": 7
+      "pegi": "8"
     },
     {
       "id": 8,
@@ -178,7 +178,13 @@
       "id": 30,
       "platform": "PC",
       "name": "Among Us",
-      "pegi": 7
+      "pegi": "10"
+    },
+    {
+      "id": 31,
+      "name": "Prueba",
+      "platform": "Xbox Series X",
+      "pegi": "18"
     }
   ]
 }
