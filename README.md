@@ -21,13 +21,13 @@ Follow these steps to run the application locally:
 1. **Clone the repository:**
 
     ```bash
-    git clone https://github.com/ElenSuvarian/seat-frontend-challenge.git
+    git clone https://github.com/ElenSuvarian/frontend-videogames.git
     ```
 
 2. **Navigate to the project directory:**
 
     ```bash
-    cd seat-frontend-challenge
+    cd frontend-videogames
     ```
 
 3. **Install the dependencies:**
